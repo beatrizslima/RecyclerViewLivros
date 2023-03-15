@@ -15,7 +15,6 @@ import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
-
     private Context mContext; //É a classe onde estou
     private List<Livro> mData; //O objeto que irá representar os dados
 
@@ -47,9 +46,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView txtTitulo;
+        TextView txtTitulo, ;
         ImageView imgLivro;
         CardView idCardView;
+
 
 
         public MyViewHolder(@NonNull View itemView) {
