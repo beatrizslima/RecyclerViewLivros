@@ -4,13 +4,17 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
+
 
     private Context mContext; //É a classe onde estou
     private List<Livro> mData; //O objeto que irá representar os dados
@@ -43,9 +47,18 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
+        TextView txtTitulo;
+        ImageView imgLivro;
+        CardView idCardView;
+
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+        txtTitulo = itemView.findViewById(R.id.txtTitulo);
+        imgLivro = itemView.findViewById(R.id.imgLivro);
+        idCardView = itemView.findViewById(R.id.idCardView);
+
+
         }
     }
 
