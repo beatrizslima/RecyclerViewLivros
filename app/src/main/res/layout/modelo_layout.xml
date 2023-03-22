@@ -6,6 +6,7 @@
     android:layout_height="220dp"
     android:layout_margin="5dp"
     android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
     app:cardCornerRadius="5dp">
 
     <LinearLayout

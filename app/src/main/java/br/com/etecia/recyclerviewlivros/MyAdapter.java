@@ -1,6 +1,8 @@
 package br.com.etecia.recyclerviewlivros;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Size;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,11 +18,13 @@ import java.util.List;
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     private Context mContext; //É a classe onde estou
-    private List<Livro> mData; //O objeto que irá representar os dados
+    //private List<Livro> mData;
+
+    private List<Livro> lstLivro;  //O objeto que irá representar os dados
 
     public MyAdapter(Context mContext, List<Livro> mData) {
         this.mContext = mContext;
-        this.mData = mData;
+        this.lstLivro = lstLivro;
     }
 
     @NonNull
@@ -35,18 +39,33 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
+        holder.txtTitulo.setText(lstLivro.get(position).getTitulo());
+        holder.imgLivro.setImageResource(lstLivro.get(position).getImg());
 
+        holder.idCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, ApresentaLivroActivity.class);
+
+                intent.putExtra("Titulo", lstLivro.get(position).getTitulo());
+                intent.putExtra("Categoria", lstLivro.get(position).getCategoria());
+                intent.putExtra("Descricao", lstLivro.get(position).getDescricao());
+                intent.putExtra("Imagem", lstLivro.get(position).getImg());
+
+                mContext.startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+            }
+        });
     }
 
-    @Override
     public int getItemCount() {
-        return 0;
+
+        return lstLivro.size();
     }
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView txtTitulo, ;
+        TextView txtTitulo;
         ImageView imgLivro;
         CardView idCardView;
 
